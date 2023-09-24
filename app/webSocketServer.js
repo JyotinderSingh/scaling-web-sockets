@@ -29,6 +29,9 @@ function handleWebSocketRequest(request, APPID) {
     console.log(
       `${APPID} received message from ${request.origin}: ${message.utf8Data}`
     );
+
+    // Whenever you receive a message from a client, publish it to the livechat
+    // channel to propogate to all the clients connected to the other servers.
     publishToRedisChannel(message.utf8Data);
   });
 
@@ -39,6 +42,9 @@ function handleWebSocketRequest(request, APPID) {
   connections.add(connection);
 }
 
+/**
+ * Broadcast the given message to all the active clients.
+ */
 function broadcastToAllWebsockets(message, APPID) {
   try {
     connections.forEach((conn) => conn.send(`${APPID}:${message}`));

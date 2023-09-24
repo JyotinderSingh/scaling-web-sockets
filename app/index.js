@@ -22,6 +22,8 @@ async function main() {
       `Server ${APPID} received message in channel ${LIVECHAT_CHANNEL}:`,
       message
     );
+    // Broadcast the message you just received to all the front-end clients
+    // connected to this server.
     broadcastToAllWebsockets(message, APPID);
   });
 

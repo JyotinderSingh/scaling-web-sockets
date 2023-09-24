@@ -10,6 +10,9 @@ const publisher = createClient({
   url: "redis://rds:6379",
 });
 
+/**
+ * Initialize the publisher and subscribers for our redis pub/sub.
+ */
 async function initializeRedisClients() {
   try {
     await publisher.connect();
@@ -21,6 +24,7 @@ async function initializeRedisClients() {
   }
 }
 
+// Subscribe to the livechat channel on the redis pub/sub.
 async function subscribeToRedisChannel(callback) {
   await subscriber.subscribe(LIVECHAT_CHANNEL, callback);
 }
