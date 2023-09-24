@@ -1,0 +1,16 @@
+{
+  "name": "high-availability-chat-application",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "app": "node index.js"
+  },
+  "author": "Jyotinder Singh",
+  "license": "ISC",
+  "dependencies": {
+    "redis": "^4.6.10",
+    "websocket": "^1.0.34"
+  }
+}
